@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["onTagsChange"],
+  emits: ["onTagsChange"],
 
   data() {
     return {
@@ -13,7 +13,8 @@ export default {
     handleKeyDown(e) {
       if (e.key === "Backspace" && this.currentValue === "") {
         this.tags.pop();
-        this.onTagsChange(this.tags);
+        // this.onTagsChange(this.tags);
+        this.$emit("onTagsChange", this.tags);
       }
     },
     handleSubmit() {
@@ -23,13 +24,15 @@ export default {
         if (!exist) {
           this.tags.push(this.currentValue);
           this.currentValue = "";
-          this.onTagsChange(this.tags);
+          //   this.onTagsChange(this.tags);
+          this.$emit("onTagsChange", this.tags);
         }
       }
     },
     deleteTag(deletedTag) {
       this.tags = this.tags.filter((tag) => tag !== deletedTag);
-      this.onTagsChange(this.tags);
+      //   this.onTagsChange(this.tags);
+      this.$emit("onTagsChange", this.tags);
     },
   },
 };
@@ -58,6 +61,7 @@ export default {
   display: inline-flex;
   border: solid 1px #000;
   border-radius: 7px;
+  height: 43px;
 }
 
 .tags {
