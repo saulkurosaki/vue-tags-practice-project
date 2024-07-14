@@ -9,8 +9,8 @@ export default {
 
   methods: {
     handleKeyDown(e) {
-      if (e.key === "Enter" && this.currentValue !== "") {
-        this.tags.push(this.currentValue);
+      if (e.key === "Backspace" && this.currentValue === "") {
+        this.tags.pop();
       }
     },
     handleSubmit() {
@@ -38,7 +38,7 @@ export default {
       </div>
     </div>
     <form @submit.prevent="handleSubmit">
-      <input type="text" v-model="currentValue" />
+      <input type="text" v-model="currentValue" @keydown="handleKeyDown" />
     </form>
   </div>
 </template>
