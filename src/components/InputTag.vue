@@ -16,6 +16,7 @@ export default {
     handleSubmit() {
       if (this.currentValue !== "") {
         this.tags.push(this.currentValue);
+        this.currentValue = "";
       }
     },
   },
