@@ -38,9 +38,56 @@ export default {
       </div>
     </div>
     <form @submit.prevent="handleSubmit">
-      <input type="text" v-model="currentValue" @keydown="handleKeyDown" />
+      <input
+        class="input"
+        type="text"
+        v-model="currentValue"
+        @keydown="handleKeyDown"
+      />
     </form>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.inputTag {
+  display: inline-flex;
+  border: solid 1px #000;
+  border-radius: 7px;
+}
+
+.tags {
+  display: flex;
+  gap: 3px;
+  padding: 5px;
+}
+
+.tags .tag {
+  display: flex;
+  padding: 5px;
+  border: solid 1px #ccc;
+  gap: 5px;
+  align-content: center;
+  border-radius: 10 px;
+}
+
+.inputTag form {
+  display: inline-flex;
+}
+
+.inputTag .input {
+  border: none;
+  outline: none;
+  padding: 0 5px;
+}
+
+.tag button {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tag button:hover {
+  background-color: #eee;
+}
+</style>
