@@ -15,8 +15,12 @@ export default {
     },
     handleSubmit() {
       if (this.currentValue !== "") {
-        this.tags.push(this.currentValue);
-        this.currentValue = "";
+        const exist = this.tags.some((item) => item === this.currentValue);
+
+        if (!exist) {
+          this.tags.push(this.currentValue);
+          this.currentValue = "";
+        }
       }
     },
     deleteTag(deletedTag) {
