@@ -19,6 +19,9 @@ export default {
         this.currentValue = "";
       }
     },
+    deleteTag(deletedTag) {
+      this.tags = this.tags.filter((tag) => tag !== deletedTag);
+    },
   },
 };
 </script>
@@ -27,7 +30,7 @@ export default {
   <div class="inputTag">
     <div class="tags">
       <div class="tag" v-for="(tag, index) in tags" :key="index">
-        {{ tag }}
+        {{ tag }} <button @click="deleteTag(tag)">X</button>
       </div>
     </div>
     <form @submit.prevent="handleSubmit">
